@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import ProfilePicture, { PersonType } from '@components/pfp';
 import { useAppContext } from '@components/state';
 import PersonList from '@components/PersonList';
 import { useState } from 'react';
@@ -79,14 +78,25 @@ const Home: NextPage = () => {
         </div>
       </nav>
 
-      <Link href="/profile/2">
-        <a>touch me</a>
-      </Link>
+      <div className="flex gap-2 flex-col items-start">
+        <Link href="/profile/2">
+          <a className="p-4 bg-violet-700"> Testing fake profile url</a>
+        </Link>
+        <Link href="/abc">
+          <a className="p-4 bg-violet-700">Testing fake url</a>
+        </Link>
+      </div>
+
       <PersonList
         data={data.filter((person) =>
           person.name.toLowerCase().includes(text.toLowerCase())
         )}
       />
+      <section>
+        <div>
+          <h1 className="text-xl font-bold">Feed</h1>
+        </div>
+      </section>
     </div>
   );
 };

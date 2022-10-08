@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import type { PersonType } from '@components/pfp';
 import { useAppContext } from '@components/state';
+import Head from 'next/head';
 
 interface TitleProps {
   info: string;
@@ -28,11 +29,11 @@ const Person: NextPage = () => {
 
   if (!person) {
     return (
-      <div className="flex flex-col w-screen h-screen justify-center items-center ">
+      <div className="flex flex-col w-screen h-screen justify-center items-center gap-2">
         <span>URL &quot;{router.query.id}&quot; NOT FOUND</span>
         <Link href="/">
           <a className="bg-violet-700 p-5 rounded hover:bg-violet-700/80 transition-colors ease-linear">
-            Go to Home
+            Go Back to Home Page
           </a>
         </Link>
       </div>
@@ -43,6 +44,12 @@ const Person: NextPage = () => {
 
   return (
     <div className="flex justify-center flex-col items-center">
+      <Head>
+        <title>{person.name}</title>
+        <meta name="description" content={`Person profile of ${person.name}`} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Image
         className="rounded-full"
         src={person.picture}
