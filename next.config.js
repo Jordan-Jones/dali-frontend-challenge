@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['api.typeform.com']
+    domains: ['api.typeform.com', 'i.giphy.com', 'imgur.com']
   }
 }
 

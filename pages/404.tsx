@@ -1,6 +1,7 @@
+import { NextPage } from 'next';
 import Link from 'next/link';
 
-const Void = () => {
+const Void: NextPage = () => {
   return (
     <div className="flex flex-col w-screen h-screen justify-center items-center gap-2">
       <h1>404 - Page Not Found</h1>

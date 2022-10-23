@@ -40,8 +40,6 @@ const Person: NextPage = () => {
     );
   }
 
-  console.log(person);
-
   return (
     <div className="flex justify-center flex-col items-center">
       <Head>
@@ -67,6 +65,12 @@ const Person: NextPage = () => {
         <Title info={person.birthday} title="Birthday" />
         <Title info={person.gender} title="Gender" />
       </div>
+
+      <Link href={`/profile/${person.name}/about`}>
+        <a className="p-4 bg-amber-600 hover:bg-amber-600/70 transition-colors ease-linear m-3">
+          About Me
+        </a>
+      </Link>
 
       <Link href="/">
         <button

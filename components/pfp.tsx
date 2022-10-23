@@ -29,21 +29,23 @@ export type PersonType = {
 
 interface PersonProps {
   person: PersonType;
+  size: number;
+  height: number;
 }
 
-const ProfilePicture = ({ person }: PersonProps): JSX.Element => {
+const ProfilePicture = ({ person, size, height }: PersonProps): JSX.Element => {
   return (
     <Link href={`/profile/${person?.name}`}>
       <a
         id="parent"
-        className="min-w-[100px] min-h-[100px] p-[2px] hover:bg-sky-700/50 
+        className={`min-w-[${size}px] min-h-[${size}px] p-[2px] hover:bg-sky-700/50 
         rounded-full flex items-center relative justify-center 
-        bg-gradient-to-r from-sky-500 to-indigo-800 hover:from-sky-500/20 hover:to-indigo-800/20"
+        bg-gradient-to-r from-sky-500 to-indigo-800 hover:from-sky-500/20 hover:to-indigo-800/20`}
       >
         <svg
           id="plus"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 absolute top-9 z-40"
+          className={`h-6 w-6 absolute top-${height} z-40`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -62,8 +64,8 @@ const ProfilePicture = ({ person }: PersonProps): JSX.Element => {
           <Image
             onClick={() => console.log(`pressed ${person?.name}`)}
             className="rounded-full"
-            width={100}
-            height={100}
+            width={size}
+            height={size}
             src={person?.picture}
             objectFit="cover"
             alt="some picture"

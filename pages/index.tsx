@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { useAppContext } from '@components/state';
 import PersonList from '@components/PersonList';
 import { useState } from 'react';
+import Post from '@components/Post';
 
 const Home: NextPage = () => {
   const { data } = useAppContext();
   const [text, setText] = useState('');
+  const thing = { title: 'high', description: 'lol', author: data[0] };
 
   console.log(data);
 
@@ -78,12 +80,16 @@ const Home: NextPage = () => {
         </div>
       </nav>
 
-      <div className="flex gap-2 flex-col items-start">
+      <div className="flex gap-2 flex-col items-center">
         <Link href="/profile/2">
-          <a className="p-4 bg-violet-700"> Testing fake profile url</a>
+          <a className="p-4 bg-teal-700 hover:bg-teal-700/50 transition-colors">
+            Testing fake profile url
+          </a>
         </Link>
         <Link href="/abc">
-          <a className="p-4 bg-violet-700">Testing fake url</a>
+          <a className="p-4 bg-teal-700 hover:bg-teal-700/50 transition-colors">
+            Testing fake url
+          </a>
         </Link>
       </div>
 
@@ -93,8 +99,9 @@ const Home: NextPage = () => {
         )}
       />
       <section>
-        <div>
-          <h1 className="text-xl font-bold">Feed</h1>
+        <h1 className="text-xl font-bold">Feed</h1>
+        <div className="flex">
+          <Post {...thing} />
         </div>
       </section>
     </div>
